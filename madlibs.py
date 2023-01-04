@@ -49,6 +49,21 @@ def show_madlib_form():
     else:  
         return render_template("goodbye.html")
 
+@app.route("/madlib")
+def show_madlib():
+    """Display the completed Madlib"""
+
+    person_in = request.args.get('person')
+    color_in = request.args.get('color')
+    noun_in = request.args.get('noun')
+    adj_in = request.args.get('adj')
+
+    return render_template("madlib.html",
+                            person = person_in,
+                            color = color_in,
+                            noun = noun_in,
+                            adjective = adj_in)
+
 @app.route("/greet")
 def greet_person():
     """Greet user with compliment."""
