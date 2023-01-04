@@ -35,10 +35,19 @@ def start_here():
 
 @app.route("/hello")
 def say_hello():
-    """Say hello to user."""
+    """Say hello to user. Ask if they'd like to play a game."""
 
     return render_template("hello.html")
 
+@app.route("/game")
+def show_madlib_form():
+    """Confirm if player wants to play and send them to Madlibs."""
+    play_confirm = request.args.get('confirm')
+
+    if play_confirm:
+        return render_template("game.html")
+    else:  
+        return render_template("goodbye.html")
 
 @app.route("/greet")
 def greet_person():
